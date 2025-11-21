@@ -1,0 +1,90 @@
+Nome: Beatriz Mazzucatto Seabra
+Data: 21/09
+
+RESPOSTAS ÀS QUESTÕES SOBRE REST E SOAP
+=========================================
+
+1. QUAL A PRINCIPAL DIFERENÇA ENTRE REST E SOAP?
+
+REST (Representational State Transfer) é um estilo arquitetural que utiliza métodos HTTP (GET, POST, PUT, DELETE, PATCH) para operações em recursos identificados por URLs. É stateless, leve, e geralmente usa JSON ou XML. Funciona sobre HTTP/HTTPS.
+
+SOAP (Simple Object Access Protocol) é um protocolo baseado em XML que define uma estrutura rígida para mensagens com envelope, header e body. É independente do protocolo de transporte (HTTP, SMTP, TCP, etc.) e possui especificações detalhadas para segurança, transações e confiabilidade.
+
+A principal diferença é que REST é um estilo arquitetural mais simples e flexível, enquanto SOAP é um protocolo mais robusto e padronizado, porém mais complexo.
+
+2. EM QUAIS CENÁRIOS SOAP AINDA É UTILIZADO?
+
+SOAP ainda é amplamente utilizado em:
+- Sistemas corporativos legados que já utilizam SOAP
+- Integrações B2B que exigem contratos rígidos e confiabilidade
+- Sistemas financeiros que precisam de transações seguras e auditáveis
+- Sistemas governamentais que exigem padronização e segurança rigorosa
+- Ambientes que exigem transações ACID
+- Integração com sistemas .NET
+- Web Services que precisam de roteamento complexo
+
+3. QUAIS SÃO AS VANTAGENS E DESVANTAGENS DE USAR REST AO INVÉS DE SOAP?
+
+VANTAGENS DO REST:
+- Simplicidade: mais fácil de implementar e entender
+- Performance: menor overhead, mais rápido
+- Flexibilidade: pode usar diferentes formatos (JSON, XML, HTML)
+- Escalabilidade: stateless facilita distribuição
+- Compatibilidade com web: funciona naturalmente com navegadores
+- Cache: aproveita o cache HTTP
+- Debugging: mais fácil de testar e debugar
+
+DESVANTAGENS DO REST:
+- Segurança: menos recursos nativos de segurança
+- Padronização: menos rigoroso, pode levar a inconsistências
+- Transações: não suporta transações distribuídas nativamente
+- Contratos: não possui WSDL para definição de contratos
+- Confiabilidade: menos recursos para garantia de entrega
+- Versionamento: mais difícil de versionar APIs
+
+4. O QUE É WS-SECURITY E COMO ELE SE COMPARA À SEGURANÇA EM APIs REST?
+
+WS-Security é uma especificação do OASIS que define como implementar segurança em serviços web SOAP. Ele fornece assinatura digital, criptografia, tokens de segurança (SAML, X.509), timestamp para prevenir ataques de replay e headers seguros no cabeçalho SOAP.
+
+COMPARAÇÃO COM SEGURANÇA REST:
+REST geralmente usa HTTPS + JWT, OAuth2, API Keys. WS-Security é uma especificação mais robusta e padronizada, sendo mais complexo mas mais completo. WS-Security garante melhor interoperabilidade entre sistemas e oferece melhor rastreabilidade para auditoria.
+
+5. EXPLIQUE O MODELO DE MATURIDADE DE RICHARDSON.
+
+O Modelo de Maturidade de Richardson foi criado por Leonard Richardson e classifica APIs em níveis de maturidade REST baseado na utilização dos recursos HTTP:
+
+Nível 0 - The Swamp of POX (Plain Old XML):
+Usa HTTP apenas como protocolo de transporte. Um único endpoint para todas as operações. Exemplo: POST /api com diferentes parâmetros.
+
+Nível 1 - Resources:
+Múltiplos endpoints, cada um representando um recurso. Ainda usa apenas POST para tudo. Exemplo: POST /users, POST /orders, POST /products.
+
+Nível 2 - HTTP Verbs:
+Utiliza os métodos HTTP corretamente (GET, POST, PUT, DELETE). Usa códigos de status HTTP apropriados. Exemplo: GET /users/1, POST /users, PUT /users/1, DELETE /users/1.
+
+Nível 3 - Hypermedia Controls (HATEOAS):
+Inclui links para navegação entre recursos. O cliente descobre a API através dos links fornecidos. Exemplo: resposta inclui links para operações relacionadas.
+
+O modelo ajuda a avaliar quão RESTful uma API realmente é, sendo o Nível 3 considerado verdadeiramente RESTful.
+
+6. O QUE É GraphQL? PESQUISA E RELACIONE COM OS CONCEITOS VISTOS EM AULA.
+
+GraphQL é uma linguagem de consulta e runtime para APIs criada pelo Facebook em 2012. Permite que clientes solicitem exatamente os dados que precisam.
+
+CARACTERÍSTICAS PRINCIPAIS:
+- Query Language: linguagem de consulta declarativa
+- Single Endpoint: um único endpoint para todas as operações
+- Type System: sistema de tipos forte
+- Real-time: suporte a subscriptions para dados em tempo real
+- Introspection: API pode ser consultada sobre sua própria estrutura
+
+COMPARAÇÃO COM REST:
+REST usa múltiplos endpoints com dados fixos por endpoint. GraphQL usa um endpoint com dados flexíveis conforme solicitado. REST pode trazer dados desnecessários (over-fetching) ou precisar de múltiplas requisições (under-fetching). GraphQL resolve ambos os problemas.
+
+RELAÇÃO COM CONCEITOS DA AULA:
+GraphQL também trabalha com recursos, mas de forma mais flexível. Geralmente usa HTTP POST para queries e JSON para requests e responses. Mantém o princípio stateless. É mais fácil de evoluir sem quebrar compatibilidade.
+
+EXEMPLO PRÁTICO:
+Em vez de fazer múltiplas chamadas REST (GET /api/contacts/1, GET /api/contacts/1/addresses, GET /api/contacts/1/phones), GraphQL permite uma única query solicitando apenas os campos necessários.
+
+GraphQL representa uma evolução natural das APIs REST, oferecendo mais flexibilidade e eficiência na comunicação cliente-servidor.

@@ -1,0 +1,7 @@
+com/example/contactapi/repository/ContactRepository.class
+com/example/contactapi/ContactApiApplication.class
+com/example/contactapi/repository/AddressRepository.class
+com/example/contactapi/model/Contact.class
+com/example/contactapi/model/Address.class
+com/example/contactapi/controller/ContactController.class
+com/example/contactapi/controller/AddressController.class
